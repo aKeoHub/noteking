@@ -1,0 +1,11 @@
+[debug] [2022-10-18T02:32:50.431Z] ----------------------------------------------------------------------
+[debug] [2022-10-18T02:32:50.432Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Kingston\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js apps:sdkconfig web 1:725532374772:web:50a2fb8463c28b499c10a1 --json
+[debug] [2022-10-18T02:32:50.433Z] CLI Version:   11.14.4
+[debug] [2022-10-18T02:32:50.433Z] Platform:      win32
+[debug] [2022-10-18T02:32:50.433Z] Node Version:  v16.15.1
+[debug] [2022-10-18T02:32:50.433Z] Time:          Mon Oct 17 2022 20:32:50 GMT-0600 (Mountain Daylight Saving Time)
+[debug] [2022-10-18T02:32:50.434Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-10-18T02:32:50.440Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-10-18T02:32:50.440Z] > authorizing via signed-in user (akrzy47@gmail.com)
+[debug] [2022-10-18T02:32:50.444Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:725532374772:web:50a2fb8463c28b499c10a1/config [none]

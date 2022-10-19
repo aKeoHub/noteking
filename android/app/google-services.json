@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "725532374772",
+    "project_id": "noteking-flutter-project",
+    "storage_bucket": "noteking-flutter-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:725532374772:android:60e09f26a47de3009c10a1",
+        "android_client_info": {
+          "package_name": "com.kingston.noteking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "725532374772-51180sksm42o1kfdnp7s0lbf65ktlnq1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdeKBZDtkd-lruwuUx7Tmjd4m59NsqYyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "725532374772-51180sksm42o1kfdnp7s0lbf65ktlnq1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
