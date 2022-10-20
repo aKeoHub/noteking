@@ -39,12 +39,16 @@ class HomePage extends StatelessWidget {
           case ConnectionState.done:
             // Grab the current user that's logged in
             final user = FirebaseAuth.instance.currentUser;
-            // If the user is verified take the value, otherwise send them to verifyView
-            if (user?.emailVerified ?? false) {
-              return const Text('Done');
+            if (user != null) {
+              if (user.emailVerified) {
+                print('Email is verfied');
+              } else {
+                return const VerifyEmailView();
+              }
             } else {
-              return const VerifyEmailView();
+              return const LoginView();
             }
+            return const Text('Done');
           default:
             return const CircularProgressIndicator();
         }
