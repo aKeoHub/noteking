@@ -5,7 +5,7 @@ import 'package:noteking/constants/routes.dart';
 import 'package:noteking/views/login_view.dart';
 import 'package:noteking/views/register_view.dart';
 import 'package:noteking/views/verify_email_view.dart';
-import 'dart:developer' as devtools show log;
+// import 'dart:developer' as devtools show log;
 import 'firebase_options.dart';
 
 void main() {
