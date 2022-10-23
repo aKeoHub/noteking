@@ -53,7 +53,7 @@ class FirebaseAuthProvider implements AuthProvider {
       if (user != null) {
         return user;
       } else {
-        return null;
+        throw UserNotFoundAuthException();
       }
     } catch (_) {
       throw GenericAuthException();
