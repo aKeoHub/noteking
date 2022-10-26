@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noteking/services/auth/auth_exceptions.dart';
 import 'package:noteking/services/auth/auth_service.dart';
 import 'package:noteking/services/crud/note_service.dart';
 
@@ -80,7 +81,7 @@ class _NewNoteViewState extends State<NewNoteView> {
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.done:
-              _note = snapshot.data as DatabaseNote;
+              _note = snapshot.data;
               _setupTextControllerListener();
               return TextField(
                 controller: _textController,
@@ -90,7 +91,6 @@ class _NewNoteViewState extends State<NewNoteView> {
                   hintText: 'Start typing your note...',
                 ),
               );
-
             default:
               return const CircularProgressIndicator();
           }

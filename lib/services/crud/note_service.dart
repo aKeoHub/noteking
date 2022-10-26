@@ -13,11 +13,17 @@ class NotesService {
   List<DatabaseNote> _notes = [];
 // our singleton
   static final NotesService _shared = NotesService._sharedInstance();
-  NotesService._sharedInstance();
+  NotesService._sharedInstance() {
+    _notesStreamController = StreamController<List<DatabaseNote>>.broadcast(
+      onListen: () {
+        _notesStreamController.sink.add(_notes);
+      },
+    );
+  }
   factory NotesService() => _shared;
 
-  final _notesStreamController =
-      StreamController<List<DatabaseNote>>.broadcast();
+  late final StreamController<List<DatabaseNote>> _notesStreamController;
+
   Stream<List<DatabaseNote>> get allNotes => _notesStreamController.stream;
 
   Future<DatabaseUser> getOrCreateUser({required String email}) async {
@@ -236,6 +242,8 @@ class NotesService {
       final dbPath = join(docsPath.path, dbName);
       final db = await openDatabase(dbPath);
       _db = db;
+      print('hello');
+      print(_db);
       // create the user table if it doesn't exist
       await db.execute(createUserTable);
       // create the note table
@@ -309,11 +317,11 @@ const createUserTable = '''CREATE TABLE IF NOT EXISTS "user" (
 	    PRIMARY KEY("id" AUTOINCREMENT)
     );''';
 
-const createNoteTable = '''CREATE TABLE "note" (
+const createNoteTable = '''CREATE TABLE IF NOT EXISTS "note" (
 	    "id"	INTEGER NOT NULL UNIQUE,
 	    "user_id"	INTEGER NOT NULL UNIQUE,
 	    "text"	TEXT,
-	    "is_synced_with_cloud"	INTEGER DEFAULT 0,
+	    "is_synced_with_cloud"	INTEGER NOT NULL DEFAULT 0,
 	    PRIMARY KEY("id" AUTOINCREMENT),
 	    FOREIGN KEY("user_id") REFERENCES "user"("id")
     );''';
