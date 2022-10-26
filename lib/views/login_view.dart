@@ -3,7 +3,7 @@ import 'dart:developer' as devtools show log;
 import 'package:noteking/constants/routes.dart';
 import 'package:noteking/services/auth/auth_exceptions.dart';
 import 'package:noteking/services/auth/auth_service.dart';
-import 'package:noteking/utilities/show_error_dialog.dart';
+import 'package:noteking/utilities/dialogs/error_dialog.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
