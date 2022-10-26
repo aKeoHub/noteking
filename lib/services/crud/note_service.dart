@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:noteking/constants/routes.dart';
 import 'package:noteking/services/crud/crud_exceptions.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
@@ -52,21 +51,24 @@ class NotesService {
     await _ensureDbisOpen();
     final db = _getDatabaseOrThrow();
 
-    // make sure the note exists
+    // make sure note exists
     await getNote(id: note.id);
 
-    // update the DB
-    final updateCount = await db.update(noteTable, {
-      textColumn: text,
-      isSyncedWithCloudColumn: 0,
-    });
+    // update DB
+    final updatesCount = await db.update(
+      noteTable,
+      {
+        textColumn: text,
+        isSyncedWithCloudColumn: 0,
+      },
+      where: 'id = ?',
+      whereArgs: [note.id],
+    );
 
-    if (updateCount == 0) {
+    if (updatesCount == 0) {
       throw CouldNotUpdateNote();
     } else {
       final updatedNote = await getNote(id: note.id);
-
-      // Make sure to update the cache
       _notes.removeWhere((note) => note.id == updatedNote.id);
       _notes.add(updatedNote);
       _notesStreamController.add(_notes);
@@ -86,7 +88,7 @@ class NotesService {
     await _ensureDbisOpen();
     final db = _getDatabaseOrThrow();
     final notes = await db.query(
-      notesRoute,
+      noteTable,
       limit: 1,
       where: 'id = ?',
       whereArgs: [id],
@@ -115,7 +117,7 @@ class NotesService {
     await _ensureDbisOpen();
     final db = _getDatabaseOrThrow();
     final deletedCount = await db.delete(
-      userTable,
+      noteTable,
       where: 'id = ?',
       whereArgs: [id],
     );
@@ -241,6 +243,7 @@ class NotesService {
     try {
       final docsPath = await getApplicationDocumentsDirectory();
       final dbPath = join(docsPath.path, dbName);
+      print(dbPath);
       final db = await openDatabase(dbPath);
       _db = db;
       // create the user table if it doesn't exist

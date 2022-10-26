@@ -89,7 +89,6 @@ class _NotesViewState extends State<NotesView> {
                             );
                           },
                         );
-                        const Text('Return all notes');
                       } else {
                         return const CircularProgressIndicator();
                       }
