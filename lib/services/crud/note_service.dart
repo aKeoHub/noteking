@@ -20,6 +20,7 @@ class NotesService {
       },
     );
   }
+
   factory NotesService() => _shared;
 
   late final StreamController<List<DatabaseNote>> _notesStreamController;
@@ -242,8 +243,6 @@ class NotesService {
       final dbPath = join(docsPath.path, dbName);
       final db = await openDatabase(dbPath);
       _db = db;
-      print('hello');
-      print(_db);
       // create the user table if it doesn't exist
       await db.execute(createUserTable);
       // create the note table
@@ -300,7 +299,13 @@ class DatabaseNote {
 
   @override
   String toString() =>
-      'Note, ID = $id, userId = $userId, isSyncedWithCloud = $isSyncedWithCloud';
+      'Note, ID = $id, userId = $userId, isSyncedWithCloud = $isSyncedWithCloud, text = $text';
+
+  @override
+  bool operator ==(covariant DatabaseNote other) => id == other.id;
+
+  @override
+  int get hashCode => id.hashCode;
 }
 
 const dbName = 'notes.db';
@@ -312,14 +317,14 @@ const userIdColumn = 'user_id';
 const textColumn = 'text';
 const isSyncedWithCloudColumn = 'is_synced_with_cloud';
 const createUserTable = '''CREATE TABLE IF NOT EXISTS "user" (
-	    "id"	INTEGER NOT NULL UNIQUE,
+	    "id"	INTEGER NOT NULL,
 	    "email"	TEXT NOT NULL UNIQUE,
 	    PRIMARY KEY("id" AUTOINCREMENT)
     );''';
 
 const createNoteTable = '''CREATE TABLE IF NOT EXISTS "note" (
-	    "id"	INTEGER NOT NULL UNIQUE,
-	    "user_id"	INTEGER NOT NULL UNIQUE,
+	    "id"	INTEGER NOT NULL,
+	    "user_id"	INTEGER NOT NULL,
 	    "text"	TEXT,
 	    "is_synced_with_cloud"	INTEGER NOT NULL DEFAULT 0,
 	    PRIMARY KEY("id" AUTOINCREMENT),
