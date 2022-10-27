@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 application
-INJECTED from C:\Users\Kingston\dev\projects\noteking\android\app\src\main\AndroidManifest.xml:3:4-33:19
+INJECTED from C:\Users\Kingston\dev\projects\noteking\android\app\src\main\AndroidManifest.xml:3:5-33:19
 MERGED from [:firebase_auth] C:\Users\Kingston\dev\projects\noteking\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-15:19
 MERGED from [:firebase_auth] C:\Users\Kingston\dev\projects\noteking\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-15:19
 MERGED from [:firebase_core] C:\Users\Kingston\dev\projects\noteking\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-15:19
