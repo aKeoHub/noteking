@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:noteking/services/auth/auth_exceptions.dart';
 import 'package:noteking/services/auth/auth_provider.dart';
 import 'package:noteking/services/auth/auth_user.dart';
