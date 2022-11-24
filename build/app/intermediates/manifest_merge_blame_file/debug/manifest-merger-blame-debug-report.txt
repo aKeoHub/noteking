@@ -36,8 +36,8 @@
 26-->[androidx.core:core:1.9.0] C:\Users\Kingston\.gradle\caches\transforms-3\6710ee2e3546b398da00e75003abfc33\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
 27        android:debuggable="true"
 28        android:extractNativeLibs="false"
-29        android:icon="@mipmap/ic_launcher"
-30        android:label="noteking" >
+29        android:icon="@mipmap/launcher_icon"
+30        android:label="NoteKing" >
 31        <activity
 32            android:name="com.kingston.noteking.MainActivity"
 33            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
